@@ -38,7 +38,7 @@ export default function GameItem({globalNumber, setBg, gameIds}){
         game.map(item =>(
               gameIds.includes(item.id) && (
                 
-                <div className="relative grid items-center z-10 self-end min-w-[170px] min-h-[170px] max-w-[170px] max-h-[170px] overflow-hidden duration-200 game" data-id={item.id} key={item.id}
+                <button className="relative grid items-center z-10 self-end min-w-[170px] min-h-[170px] overflow-hidden duration-75 game" data-id={item.id} key={item.id}
                      onClick={(e) => ( activeSelection(e, item.cover_art_url))}>
                     
                     <div className="h-auto w-auto gap-5 active duration-200 relative">
@@ -53,10 +53,10 @@ export default function GameItem({globalNumber, setBg, gameIds}){
                             <h2 className="text-white font-bold text-3xl line-clamp-1">{item.title}</h2>
                             
                             <div className="flex gap-20 [&_button:after]:content-[attr(data-action)] [&_button:after]:text-white [&_button:after]:relative [&_button:after]:left-4">
-                                <button className="w-7 h-7 rounded-full p-2 bg-white leading-[0]" data-action="Start" key={'Start'}>A</button>
-                                <button className="w-7 h-7 rounded-full p-2 bg-white leading-[0]" data-action="Options" key={'Options'}>+</button>
+                                <button tabindex="-1" className="w-7 h-7 rounded-full p-2 bg-white leading-[0]" data-action="Start" key={'Start'}>A</button>
+                                <button tabindex="-1" className="w-7 h-7 rounded-full p-2 bg-white leading-[0]" data-action="Options" key={'Options'}>+</button>
     
-                                <button data-action={`${globalNumber}/${globalNumber * 5}`} key={'Trophy'}    
+                                <button tabindex="-1" data-action={`${globalNumber}/${globalNumber * 5}`} key={'Trophy'}    
                                         className="
                                           after:!text-[#80e103] 
                                             after:!left-7
@@ -76,7 +76,7 @@ export default function GameItem({globalNumber, setBg, gameIds}){
                         </div>
 
                     </div>
-                </div>
+                </button>
               )
         ))
     )
