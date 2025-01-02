@@ -25,10 +25,10 @@ export default function GamesList({globalNumber}){
   }, [items]);    
 
     return(
-        <div className='h-full max-h-full grid items-center [background-image:--bg] !bg-cover duration-200 w-auto overflow-hidden relative asd' style={{'--bg':`url(${bg})`}}>
-            <div className="flex gap-6 w-auto h-auto after:content-[''] snap-mandatory z-40 scroll-pl-24
+        <div className='h-screen max-h-full grid items-center [background-image:--bg] !bg-cover duration-200 w-full overflow-hidden                      
+                        after:absolute after:bg-black/55 after:w-full after:h-screen after:z-0 after:left-0 after:top-0 ' style={{'--bg':`url(${bg})`}}>
+            <div className="flex gap-6 w-auto h-auto after:content-[''] snap-mandatory z-40 scroll-pl-24 px-20 [&::-webkit-scrollbar]:hidden overflow-x-scroll 
                     before:content-[''] before:z-[1] before:bg-[linear-gradient(205deg,transparent_60%,var(--color))] before:absolute before:left-0 before:saturate-[5] before:bottom-0 before:h-full before:w-full before:blur-[10rem] before:pointer-events-none
-                    after:absolute after:bg-black/55 after:w-full after:h-full after:z-0 after:left-0 after:top-0 px-20 overflow-x-scroll [&::-webkit-scrollbar]:hidden
                     [&:has(:not(div.ativo))_.ativo_.infos]:flex 
                     [&:has(:not(div.ativo))_.ativo]:h-auto
                     [&:has(:not(div.ativo))_.ativo]:w-auto
