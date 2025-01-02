@@ -11,7 +11,7 @@ export default function GameItem({globalNumber, setBg, gameIds}){
           try {
             const response = await fetch(
               `https://api.allorigins.win/get?url=${encodeURIComponent(
-                'https://www.nsgreviews.com/search/s?search=&limit=5000'
+                'https://www.nsgreviews.com/search/s?search=&limit=25000'
               )}`
             );
             const data = await response.json();
