@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import Loading from "./Loading"
-import ColorThief from 'colorThief'
+import ColorThief from './../../node_modules/colorthief/dist/color-thief.mjs'
 
 export default function GameItem({globalNumber, setBg, gameIds}){
     const [game, setGame] = useState([])
@@ -91,21 +91,22 @@ export default function GameItem({globalNumber, setBg, gameIds}){
         e.target.closest('[data-id]').classList.add('ativo');
         activeBg(item)
         e.target.scrollIntoView({behavior:'smooth', inline: 'start'})
+
+        e.target.parentElement.style.cssText = `--color:${e.target.dataset.color}`
     }
 
     return(
         game.map((item,index) =>(
                 
-                <button className="grid items-center self-end max-w-[170px] max-h-[170px] min-w-[170px] aspect-square [transition:width_.2s_ease] game z-30 scroll-ml-10 relative
-                                  before:content-[] before:bg-[linear-gradient(205deg,transparent_60%,var(--color))] before:absolute before:left-0 before:brightness-90 before:saturate-[5] before:bottom-0 before:h-full before:w-full before:blur-[15rem] before:pointer-events-none   
-                                   after:absolute after:-left-[6rem] after:-top-[41px] after:[scale:.4]"
+                <button className="grid items-center self-end max-w-[170px] max-h-[170px] min-w-[170px] aspect-square [transition:width_.2s_ease] game z-30 scroll-ml-10 relative   
+                                  after:absolute after:-left-[6rem] after:-top-[41px] after:[scale:.4]"
                         data-id={item.id} key={item.id}
                         data-installed={index % 2 ? true : false}
                         onClick={(e) => ( activeSelection(e, item.cover_art_url) )}
-                        style={{'--color': colors[item.cover_art_url]}}
+                        data-color={colors[item.cover_art_url]}
                 >
                     
-                    <div className="h-auto w-auto gap-5 active duration-200 relative ">
+                    <div className="h-auto w-auto gap-5 active duration-200 relative pointer-events-none">
                         <div className="relative z-10 image">
                             {loading ? <Loading /> :
                                     <img src={item.cover_art_url} 
