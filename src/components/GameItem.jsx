@@ -126,7 +126,7 @@ export default function GameItem({globalNumber, setBg, gameIds}){
                                           after:!text-[#80e103] 
                                             after:!left-7
                                             after:!-top-[.3rem]
-                                            before:content-[''] before:bg-[url('./src/assets/trophy.webp')] 
+                                            before:content-[''] before:bg-[url('../src/assets/trophy.webp')] 
                                             before:bg-contain
                                             before:w-full 
                                             before:h-full 
