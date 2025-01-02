@@ -21,7 +21,7 @@ export default function GamesList({globalNumber}){
         const clonedItems = [ ...items.slice(-items.length), ...items, ...items.slice(0, items.length), ];
         setLoopItems(clonedItems);
 
-        setTimeout(() => document.querySelectorAll('button[data-id]')[7].click(),100)
+        setTimeout(() => document.querySelectorAll('button[data-id]')[7].click(),300)
   }, [items]);    
 
     return(
@@ -44,7 +44,7 @@ export default function GamesList({globalNumber}){
                     [&:has(:not(div.ativo))_.ativo_.image]:border-[4px]
                     [&:has(:not(div.ativo))_.ativo_img]:p-[.3rem]
                     [&:has(:not(div.ativo))_.ativo_.image]:border-[#0efaff]
-                    [&:has(:not(div.ativo))_.ativo[data-installed='true']]:after:content-[url(./src/assets/cartridge.webp)]
+                    [&:has(:not(div.ativo))_.ativo[data-installed='true']]:after:content-[url(../src/assets/cartridge.webp)]
                     ">
                     {loopItems.map((item, index) => (
                         <GameItem globalNumber={globalNumber} setBg={setBg} />, <GameItem globalNumber={globalNumber} setBg={setBg} key={index}/>
