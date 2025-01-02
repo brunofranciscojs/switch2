@@ -37,7 +37,7 @@ The interface aims to replicate and expand upon the sleek design of the Nintendo
    ```
 
 ## Deployment
-The project is deployed on Vercel for easy access. [View the live demo here](https://your-vercel-url.vercel.app/).
+The project is deployed on Vercel for easy access. [View the live demo here](https://nintendo-switch2-ui.vercel.app/).
 
 ## Technologies Used
 - **React** for building the user interface.
@@ -70,7 +70,7 @@ A interface busca replicar e expandir o design elegante do Nintendo Switch, ofer
 
 1. Clone o repositório:
    ```bash
-   git clone [https://github.com/your-username/nintendo-switch-2-interface](https://github.com/brunofraniscu/switch2).git
+   git clone https://github.com/brunofraniscu/switch2.git
    cd nintendo-switch-2-interface
    ```
 
@@ -90,7 +90,7 @@ A interface busca replicar e expandir o design elegante do Nintendo Switch, ofer
    ```
 
 ## Deploy
-O projeto está hospedado no Vercel para acesso fácil. [Veja o demo aqui](https://your-vercel-url.vercel.app/).
+O projeto está hospedado no Vercel para acesso fácil. [Veja o demo aqui](https://nintendo-switch2-ui.vercel.app/).
 
 ## Tecnologias Utilizadas
 - **React** para construir a interface.
