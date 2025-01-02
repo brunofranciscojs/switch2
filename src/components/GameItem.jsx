@@ -5,60 +5,51 @@ export default function GameItem({globalNumber, setBg, gameIds}){
     const [game, setGame] = useState([])
     const [loading, setLoading] = useState(true)
     const imgPath = 'https://assets.nintendo.com/image/upload/ar_16:9,b_auto:border,c_lpad/b_white/f_auto/q_auto/dpr_auto/c_scale,w_1200/v1/'
-    
-    useEffect(() => {
+
+    useEffect(() =>{
         const fetchGames = async () => {
-          try {
-            const response = await fetch(
-              `https://api.allorigins.win/get?url=${encodeURIComponent(
-                'https://www.nsgreviews.com/search/s?search=&limit=25000'
-              )}`
-            );
-            const data = await response.json();
-            const parsedData = JSON.parse(data.contents);
-            const rows = parsedData.rows || [];
+            try {
+                const response = await fetch('./src/assets/gamesList.json')
+                const data = await response.json();
+                setGame(data.rows)
 
-            setGame(rows);
-          } catch (error) {
-             console.error("Failed to fetch games list", error);
-          } finally {
-            setTimeout(() =>{
+            } catch (error) {
+                console.error("Failed to fetch games list", error);
+            } finally {
                 setLoading(false);
-            },1500)
-          }
-        };
-      
-        fetchGames();
-      }, []);
-
-      const activeBg = (bgUrl) => {
-        localStorage.setItem('activeBg', JSON.stringify(bgUrl))
-        setBg(localStorage.getItem('activeBg'))
-
+            }
       };
+      fetchGames()
+    },[])
+
+    const activeBg = (bgUrl) => {
+      localStorage.setItem('activeBg', JSON.stringify(bgUrl))
+      setBg(localStorage.getItem('activeBg'))
+    };
       
     const activeSelection = (e, item) =>{
-        document.querySelectorAll('[data-id]').forEach(div => div.classList.remove('is-active'))
+        document.querySelectorAll('[data-id]').forEach(div => div.classList.remove('is-active','game'))
         e.target.closest('[data-id]').classList.add('is-active');
-        activeBg(`${imgPath}${item}`)
+        activeBg(`${item.includes('src/assets') ? '' : imgPath}${item}`)
         e.target.scrollIntoView({behavior:'smooth', inline: 'center'})
     }
 
     return(
         game.map(item =>(
-  
-                <div className="relative grid items-center z-10 self-end min-w-[170px] min-h-[170px] overflow-hidden duration-200" data-id={item.id} key={item.id} style={{ display: !gameIds.includes(item.id) ? 'none' : 'block' }}
+              gameIds.includes(item.id) && (
+                
+                <div className="relative grid items-center z-10 self-end min-w-[170px] min-h-[170px] max-w-[170px] max-h-[170px] overflow-hidden duration-200 game" data-id={item.id} key={item.id}
                      onClick={(e) => ( activeSelection(e, item.cover_art_url))}>
                     
                     <div className="h-auto w-auto gap-5 active duration-200 relative">
                         <div className="relative z-10 image">
                             {loading ? <Loading /> :
-                                    <img src={`${imgPath}${item.cover_art_url}`} 
+                                    <img src={`${item.cover_art_url.includes('src/assets') ? '' : imgPath}${item.cover_art_url}`} 
                                          className="aspect-square object-cover object-center w-auto"/>
                             }
                         </div>
     
-                        <div className="hidden flex-col gap-2 z-10 items-start infos absolute w-[500px] -right-[640px] top-0 ">
+                        <div className="hidden flex-col gap-2 z-10 items-start infos absolute w-[500px] -right-[530px] top-0 ">
                             <h2 className="text-white font-bold text-3xl line-clamp-1">{item.title}</h2>
                             
                             <div className="flex gap-20 [&_button:after]:content-[attr(data-action)] [&_button:after]:text-white [&_button:after]:relative [&_button:after]:left-4">
@@ -86,7 +77,7 @@ export default function GameItem({globalNumber, setBg, gameIds}){
 
                     </div>
                 </div>
-        
+              )
         ))
     )
 }
