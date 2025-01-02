@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import Loading from "./Loading"
 
-export default function GameItem({globalNumber, setBg}){
+export default function GameItem({globalNumber, setBg, gameIds}){
     const [game, setGame] = useState([])
     const [loading, setLoading] = useState(true)
     const imgPath = 'https://assets.nintendo.com/image/upload/ar_16:9,b_auto:border,c_lpad/b_white/f_auto/q_auto/dpr_auto/c_scale,w_1200/v1/'
@@ -11,7 +11,7 @@ export default function GameItem({globalNumber, setBg}){
           try {
             const response = await fetch(
               `https://api.allorigins.win/get?url=${encodeURIComponent(
-                'https://www.nsgreviews.com/search/s?search=Zelda%E2%84%A2&limit=100'
+                'https://www.nsgreviews.com/search/s?search=&limit=5000'
               )}`
             );
             const data = await response.json();
@@ -47,7 +47,7 @@ export default function GameItem({globalNumber, setBg}){
     return(
         game.map(item =>(
   
-                <div className="relative grid items-center z-10 self-end min-w-[170px] min-h-[170px] overflow-hidden duration-200" data-id={item.id} key={item.id} style={{ display: [9822,9801,37872,9771,9765].includes(item.id) ? 'none' : 'block' }}
+                <div className="relative grid items-center z-10 self-end min-w-[170px] min-h-[170px] overflow-hidden duration-200" data-id={item.id} key={item.id} style={{ display: !gameIds.includes(item.id) ? 'none' : 'block' }}
                      onClick={(e) => ( activeSelection(e, item.cover_art_url))}>
                     
                     <div className="h-auto w-auto gap-5 active duration-200 relative">

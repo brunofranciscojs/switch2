@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import GameItem from './GameItem'
 
-export default function GamesList({globalNumber}){
+export default function GamesList({globalNumber, gameIds}){
     
     const [bg, setBg] = useState(useState(() => localStorage.getItem('activeBg') || '#ffffff00'))
 
@@ -31,7 +31,7 @@ export default function GamesList({globalNumber}){
                     [&:has(:not(div.is-active))_.is-active_img]:p-[.3rem]
                     [&:has(:not(div.is-active))_.is-active_.image]:border-[#0efaff]
                     ">
-                <GameItem globalNumber={globalNumber} setBg={setBg}/>
+                <GameItem globalNumber={globalNumber} setBg={setBg} gameIds={gameIds}/>
             </div>
         </div>
     )
