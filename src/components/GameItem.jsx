@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react"
 import Loading from "./Loading"
 import ColorThief from './../../node_modules/colorthief/dist/color-thief.mjs'
+import ActionButton from "./ActionButton"
 
 export default function GameItem({globalNumber, setBg, gameIds}){
     const [game, setGame] = useState([])
@@ -94,6 +95,10 @@ export default function GameItem({globalNumber, setBg, gameIds}){
 
         e.target.parentElement.style.cssText = `--color:${e.target.dataset.color}`
     }
+    const buttons = {
+      Start:'A', 
+      Options:'+'
+    }
 
     return(
         game.map((item,index) =>(
@@ -118,9 +123,9 @@ export default function GameItem({globalNumber, setBg, gameIds}){
                             <h2 className="text-white font-bold text-3xl line-clamp-1">{item.title}</h2>
                             
                             <div className="flex gap-20 [&_a:after]:content-[attr(data-action)] [&_a:after]:text-white [&_a:after]:relative [&_a:after]:left-4">
-                                <a tabIndex="-1" className="w-7 h-7 rounded-full p-2 bg-white leading-[.6]" data-action="Start" key={'Start'}>A</a>
-                                <a tabIndex="-1" className="w-7 h-7 rounded-full p-2 bg-white leading-[.6]" data-action="Options" key={'Options'}>+</a>
-    
+                                
+                                {Object.entries(buttons).map(button => <ActionButton text={button[1]} action={button[0]} key={button[0]}/> )}
+
                                 <a tabIndex="-1" data-action={`${globalNumber}/${globalNumber * 5}`} key={'Trophy'}    
                                         className="
                                           after:!text-[#80e103] 
