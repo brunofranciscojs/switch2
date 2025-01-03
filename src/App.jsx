@@ -13,7 +13,7 @@ function App() {
   },[])
 
   return (
-    <main className='bg-gray-600 w-full h-screen'>
+    <main className='bg-gray-600 w-full h-screen overflow-y-hidden'>
       <Analytics/>
       <Header globalNumber={globalNumber} />
       <GamesList globalNumber={globalNumber} />
