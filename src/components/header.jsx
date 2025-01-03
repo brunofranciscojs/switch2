@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Notification from './Notification';
 
 const icons = [{
     news: `<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"> <path fill-rule="evenodd" clip-rule="evenodd" d="M18.024 24H25.8182C27.224 24 28.3636 22.8604 28.3636 21.4546V6.18184C28.3636 4.77602 27.224 3.63639 25.8182 3.63639H6.18181C4.77599 3.63639 3.63636 4.77602 3.63636 6.18184V21.4546C3.63636 22.8604 4.77599 24 6.18181 24H13.5303L15.8841 27.4238L18.024 24ZM15.0025 28.8344L15.0034 28.8331L15.0025 28.8344ZM19.6364 26.9091H25.8182C28.8306 26.9091 31.2727 24.467 31.2727 21.4546V6.18184C31.2727 3.16938 28.8306 0.727295 25.8182 0.727295H6.18181C3.16935 0.727295 0.727264 3.16938 0.727264 6.18184V21.4546C0.727264 24.467 3.16935 26.9091 6.18181 26.9091H12L14.4293 30.4427C15.171 31.5215 16.7755 31.4865 17.4694 30.3763L19.6364 26.9091Z" fill="#FC5835"/> <path fill-rule="evenodd" clip-rule="evenodd" d="M28.3636 15.1564H3.63636V12.2473H28.3636V15.1564ZM16 20.923H6.54545V18.0139H16V20.923Z" fill="#FC5835"/> </svg>`,
@@ -42,8 +43,11 @@ export default function Header ({globalNumber}){
     
                 <ul className='flex gap-9 flex-row list-none items-center border-l pl-9'>
                     {icons.map((iconObj) =>
-                        Object.entries(iconObj).map(([name, svg]) => (
-                            <li key={name} dangerouslySetInnerHTML={{ __html: svg }}></li>
+                        Object.entries(iconObj).map(([name, svg],index) => (
+                            <li key={name} className='hover:opacity-60 duration-200 relative'>
+                                {index == 0 && <Notification />}
+                                <span dangerouslySetInnerHTML={{ __html: svg }}></span>
+                            </li>
                         ))
                     )}
                 </ul>
