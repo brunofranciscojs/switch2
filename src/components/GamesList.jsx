@@ -25,9 +25,9 @@ export default function GamesList({globalNumber}){
   }, [items]);    
 
     return(
-        <div className='h-screen max-h-full grid items-center [background-image:--bg] !bg-cover duration-200 w-full overflow-hidden                      
+        <div className='h-dvh max-h-dvh grid items-center [background-image:--bg] !bg-cover duration-200 w-full overflow-hidden                    
                         after:absolute after:bg-black/55 after:w-full after:h-screen after:z-0 after:left-0 after:top-0 ' style={{'--bg':`url(${bg})`}}>
-            <div className="flex gap-6 w-auto h-auto after:content-[''] snap-mandatory z-40 sm:scroll-pl-24 scroll-pl-6 px-20 [&::-webkit-scrollbar]:hidden overflow-x-scroll 
+            <div className="flex  gap-6 w-auto h-auto after:content-[''] snap-mandatory z-40 sm:scroll-pl-24 scroll-pl-6 cl:px-20 px-10 [&::-webkit-scrollbar]:hidden overflow-x-scroll py-12
                     before:content-[''] before:z-[1] before:bg-[linear-gradient(205deg,transparent_60%,var(--color))] before:absolute before:left-0 before:saturate-[5] before:bottom-0 before:h-full before:w-full before:blur-[10rem] before:pointer-events-none
                     [&:has(:not(div.ativo))_.ativo_.infos]:flex 
                     [&:has(:not(div.ativo))_.ativo]:h-auto
@@ -44,7 +44,7 @@ export default function GamesList({globalNumber}){
                     [&:has(:not(div.ativo))_.ativo_.image]:border-[4px]
                     [&:has(:not(div.ativo))_.ativo_img]:p-[.3rem]
                     [&:has(:not(div.ativo))_.ativo_.image]:border-[#0efaff]
-                    md:[&:has(:not(div.ativo))_.ativo[data-installed='true']]:after:content-[url(../src/assets/cartridge.webp)]
+                    md:[&:has(:not(div.ativo))_.ativo[data-installed='true']]:after:content-[url(../src/assets/cartridge.webp)] 
                     ">
                     {loopItems.map((item, index) => (
                         <GameItem globalNumber={globalNumber} setBg={setBg} />, <GameItem globalNumber={globalNumber} setBg={setBg} key={index}/>

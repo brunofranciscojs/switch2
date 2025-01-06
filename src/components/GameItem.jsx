@@ -91,7 +91,7 @@ export default function GameItem({globalNumber, setBg, gameIds}){
         document.querySelectorAll('[data-id]').forEach(div => div.classList.remove('ativo','game'))
         e.target.closest('[data-id]').classList.add('ativo');
         activeBg(item)
-        e.target.scrollIntoView({behavior:'smooth', inline: 'start'})
+        e.target.scrollIntoView({behavior:'smooth', block: 'nearest', inline: 'start'})
 
         e.target.parentElement.style.cssText = `--color:${e.target.dataset.color}`
     }
@@ -104,7 +104,7 @@ export default function GameItem({globalNumber, setBg, gameIds}){
         game.map((item,index) =>(
                 
                 <button className="grid items-center self-end max-w-[170px] max-h-[170px] min-w-[170px] aspect-square [transition:width_.2s_ease] game z-30 scroll-ml-10 relative   
-                                  after:absolute after:-left-[6rem] after:-top-[41px] after:[scale:.4]"
+                                  after:absolute after:-left-[6rem] after:-top-[41px] after:[scale:.4] [zoom:.7] cl:[zoom:1]"
                         data-id={item.id} key={item.id}
                         data-installed={index % 2 ? true : false}
                         onClick={(e) => ( activeSelection(e, item.cover_art_url) )}
@@ -114,8 +114,7 @@ export default function GameItem({globalNumber, setBg, gameIds}){
                     <div className="h-auto w-auto gap-5 active duration-200 relative pointer-events-none">
                         <div className="relative z-10 image">
                             {loading ? <Loading /> :
-                                    <img src={item.cover_art_url} 
-                                         className="aspect-square object-cover object-center w-auto"/>
+                                    <img src={item.cover_art_url} className="aspect-square object-cover object-center w-auto"/>
                             }
                         </div>
     

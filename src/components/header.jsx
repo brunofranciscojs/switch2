@@ -32,7 +32,7 @@ export default function Header ({ globalNumber }){
       }, []);
 
     return (
-        <nav className='flex absolute w-full justify-between items-center px-8 sm:px-20 py-16 z-50 flex-wrap gap-12'>
+        <nav className='flex absolute w-full cl:justify-between justify-center items-center px-4 sm:px-20 cl:py-16 py-7 z-50 flex-wrap cl:gap-12 gap-7 [zoom:.7] cl:[zoom:1]'>
 
             <div className='flex gap-6 items-center'>
 
