@@ -41,7 +41,7 @@ export default function BottomBar({globalNumber}){
             </div>
 
             <span className="text-white text-sm flex items-center"><span dangerouslySetInnerHTML={{__html:music}} className="mr-2"></span> 
-                Now Playing: Lorem Ipsum Dolor ({JSON.parse(gameName)})
+                Now Playing: Lorem Ipsum Dolor ({gameName})
             </span>
 
             <div className="w-5 lg:justify-end justify-center gap-28 flex [&_a:after]:content-[attr(data-action)] [&_a:after]:text-white [&_a:after]:relative [&_a:after]:left-4 pr-12 relative [&_small]:-translate-x-12">
