@@ -9,6 +9,7 @@ export default function GameItem({globalNumber, setBg, gameIds}){
     const imgPath = 'https://assets.nintendo.com/image/upload/ar_16:9,b_auto:border,c_lpad/b_white/f_auto/q_auto/dpr_auto/c_scale,w_1200/v1/'
     const [colors, setColors] = useState(null)
 
+    
     useEffect(() =>{
         const fetchGames = async () => {
             try {
